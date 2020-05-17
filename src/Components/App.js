@@ -15,7 +15,7 @@ class App extends Component{
       const {muscles} = exercise;
 
       exercises[muscles] = exercises[muscles]
-        ? [...exercises[muscles], muscles]
+        ? [...exercises[muscles], exercise]
         : [exercise]
 
       return exercises

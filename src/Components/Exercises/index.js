@@ -1,5 +1,7 @@
-import React from 'react'
-import {Grid, Paper, Typography} from '@material-ui/core'
+import React, {Fragment} from 'react'
+import {Grid, Paper, Typography, List, ListItem, ListItemIcon, ListItemText} from '@material-ui/core'
+import InboxIcon from '@material-ui/icons/Inbox';
+
 
 const styles = {
   Paper:{padding: 20, marginTop: 10, marginBottom: 10}
@@ -13,9 +15,23 @@ export default ( {exercises} ) =>{
         <Paper style={styles.Paper}>
           {exercises.map(([group, exercise])=> {
             return (
-              <Typography variant="h6" style={{textTransform: 'capitalize'}}>
-                {group}
-              </Typography>
+              <Fragment>
+                <Typography variant="h6" style={{textTransform: 'capitalize'}}>
+                  {group}
+                </Typography>
+                <List component="nav" aria-label="main mailbox folders">
+                      {exercise.map(({title})=>{
+                        return(
+                          <ListItem button>
+                            <ListItemIcon>
+                              <InboxIcon />
+                            </ListItemIcon>
+                            <ListItemText primary={title} />
+                          </ListItem>
+                        )
+                      })}
+                </List>
+              </Fragment>
             )
           })}
         </Paper>
