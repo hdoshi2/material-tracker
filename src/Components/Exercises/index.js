@@ -1,18 +1,32 @@
 import React from 'react'
-import {Grid} from '@material-ui/core'
-import LeftPane from './LeftPane';
-import RightPane from './RightPane';
+import {Grid, Paper, Typography} from '@material-ui/core'
 
 const styles = {
   Paper:{padding: 20, marginTop: 10, marginBottom: 10}
 }
 
-export default props =>
-<Grid container>
-  <Grid item sm>
-    <LeftPane sx={styles} />
-  </Grid>
-  <Grid item sm>
-    <RightPane sx={styles} />
-  </Grid>
-</Grid>
+export default ( {exercises} ) =>{
+  console.log(exercises)
+  return(
+    <Grid container>
+      <Grid item sm>
+        <Paper style={styles.Paper}>
+          {exercises.map(([group, exercise])=> {
+            return (
+              <Typography variant="h6" style={{textTransform: 'capitalize'}}>
+                {group}
+              </Typography>
+            )
+          })}
+        </Paper>
+      </Grid>
+      <Grid item sm>
+        <Paper style={styles.Paper}>
+          Right Panes
+        </Paper>
+      </Grid>
+    </Grid>
+  )
+}
+
+
