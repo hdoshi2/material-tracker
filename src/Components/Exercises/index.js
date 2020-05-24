@@ -12,29 +12,33 @@ export default ({ exercises, category }) => {
   return (
     <Grid container>
       <Grid item sm>
+
         <Paper style={styles.Paper}>
           {exercises.map(([group, exercise]) => {
             return (
-              <Fragment>
-                <Typography variant="h6" style={{ textTransform: 'capitalize' }}>
-                  {group}
-                </Typography>
-                <List component="nav" aria-label="main mailbox folders">
-                  {exercise.map(({ title }) => {
-                    return (
-                      <ListItem button>
-                        <ListItemIcon>
-                          <InboxIcon />
-                        </ListItemIcon>
-                        <ListItemText primary={title} />
-                      </ListItem>
-                    )
-                  })}
-                </List>
-              </Fragment>
+              !category || category === group
+                ?<Fragment>
+                  <Typography variant="h6" style={{ textTransform: 'capitalize' }}>
+                    {group}
+                  </Typography>
+                  <List component="nav" aria-label="main mailbox folders">
+                    {exercise.map(({ title }) => {
+                      return (
+                        <ListItem button>
+                          <ListItemIcon>
+                            <InboxIcon />
+                          </ListItemIcon>
+                          <ListItemText primary={title} />
+                        </ListItem>
+                      )
+                    })}
+                  </List>
+                </Fragment>
+                : null
             )
           })}
         </Paper>
+        
       </Grid>
       <Grid item sm>
         <Paper style={styles.Paper}>
