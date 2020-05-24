@@ -8,6 +8,9 @@ export default ({muscles, category, onSelect}) => {
     ? muscles.findIndex(group => group === category) + 1
     : 0;
 
+  const onIndexSelect = (e, index) => {
+      onSelect(index === 0 ? '' : muscles[index - 1])};
+
   console.log(index, category, muscles)
   return(
     <Paper>
@@ -15,7 +18,7 @@ export default ({muscles, category, onSelect}) => {
         value={index}
         indicatorColor="primary"
         textColor="primary"
-        // onChange={}
+        onChange={onIndexSelect}
         centered
       >
 

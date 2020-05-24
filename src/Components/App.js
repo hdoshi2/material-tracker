@@ -7,8 +7,9 @@ import {muscles, exercises} from '../store.js'
 class App extends Component{
   state = {
     exercises,
-    category: 'Chest'
+    category: ''
   }
+
 
   getExercisesByMuscles(){
     return Object.entries(
@@ -24,6 +25,7 @@ class App extends Component{
     )
   }
 
+  //Sets state for the selected categeory in the footer Tab
   handleCategorySelected = category => {
     this.setState({
       category
@@ -33,10 +35,11 @@ class App extends Component{
   render(){
     const exercises = this.getExercisesByMuscles(),
      {category} = this.state;
+
     return(
       <Fragment>
         <Header />
-        <Exercises exercises={exercises}/>
+        <Exercises exercises={exercises} category={category}/>
         <Footer muscles={muscles} category={category} onSelect={this.handleCategorySelected}/>
       </Fragment>
     )
