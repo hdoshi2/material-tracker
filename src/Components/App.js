@@ -1,10 +1,10 @@
-import React, {Component, Fragment} from 'react';
+import React, { Component } from 'react';
 import '../App.css';
-import {Header, Footer} from './Layouts';
+import { Header, Footer } from './Layouts';
 import Exercises from './Exercises';
-import {muscles, exercises} from '../store.js'
+import { muscles, exercises } from '../store.js'
 
-class App extends Component{
+class App extends Component {
   state = {
     exercises,
     category: '',
@@ -12,17 +12,17 @@ class App extends Component{
   }
 
 
-  getExercisesByMuscles(){
+  getExercisesByMuscles() {
     return Object.entries(
       this.state.exercises.reduce((exercises, exercise) => {
-      const {muscles} = exercise;
+        const { muscles } = exercise;
 
-      exercises[muscles] = exercises[muscles]
-        ? [...exercises[muscles], exercise]
-        : [exercise]
+        exercises[muscles] = exercises[muscles]
+          ? [...exercises[muscles], exercise]
+          : [exercise]
 
-      return exercises
-    }, {})
+        return exercises
+      }, {})
     )
   }
 
@@ -33,22 +33,23 @@ class App extends Component{
     })
   }
 
+  //Displays exercise selected on right pane
   handleExcerciseSelected = id => {
     this.setState((prevState) => ({
       exercise: prevState.exercises.find(ex => ex.id === id)
     }))
   }
 
-  render(){
-    const exercises = this.getExercisesByMuscles(),
-     {category, exercise} = this.state;
+  render() {
+    const exercises = this.getExercisesByMuscles();
+    const  { category, exercise } = this.state;
 
-    return(
-      <Fragment>
+    return (
+      <>
         <Header />
-        <Exercises exercises={exercises} category={category} onSelect={this.handleExcerciseSelected} exercise={exercise}/>
-        <Footer muscles={muscles} category={category} onSelect={this.handleCategorySelected}/>
-      </Fragment>
+        <Exercises exercises={exercises} category={category} onSelect={this.handleExcerciseSelected} exercise={exercise} />
+        <Footer muscles={muscles} category={category} onSelect={this.handleCategorySelected} />
+      </>
     )
   }
 }

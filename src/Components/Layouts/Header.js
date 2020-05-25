@@ -2,6 +2,7 @@ import React from 'react'
 // import { makeStyles } from '@material-ui/core/styles';
 import {AppBar, Toolbar, Typography, IconButton, Button} from '@material-ui/core'
 import MenuIcon from '@material-ui/icons/Menu';
+import Create from '../Exercises/Dialogs/Create'
 
 // const useStyles = makeStyles((theme) => ({
 //   root: {
@@ -26,7 +27,7 @@ export default (props) =>{
       <Typography variant="h6" color="inherit" style={{flex: 1}}>
         News
       </Typography>
-      <Button color="inherit">Login</Button>
+      <Create />
     </Toolbar>
   </AppBar>
 

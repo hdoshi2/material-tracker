@@ -26,10 +26,10 @@ export default ({
 
         <Paper style={styles.Paper}>
 
-          {exercises.map(([group, exercise]) => {
+          {exercises.map(([group, exercise], id) => {
             return (
               !category || category === group
-                ?<Fragment>
+                ?<Fragment key={id}>
 
                   <Typography variant="h6" style={{ textTransform: 'capitalize' }}>
                     {group}
@@ -38,11 +38,11 @@ export default ({
                   <List component="nav" aria-label="main mailbox folders">
                     {exercise.map(({ id, title }) => {
                       return (
-                        <ListItem button>
+                        <ListItem key={id} button onClick={() => onSelect(id)}>
                           <ListItemIcon>
                             <InboxIcon />
                           </ListItemIcon>
-                          <ListItemText primary={title} onClick={() => onSelect(id)}/>
+                          <ListItemText primary={title}/>
                         </ListItem>
                       )
                     })}
