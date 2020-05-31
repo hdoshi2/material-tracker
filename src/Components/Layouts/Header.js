@@ -16,8 +16,9 @@ import Create from '../Exercises/Dialogs/Create'
 //   },
 // }));
 
-export default (props) =>{
+export default ({muscles}) =>{
   // const classes = useStyles();
+  // console.log("TEST", exercises)
   return(
   <AppBar position="static">
     <Toolbar>
@@ -27,7 +28,7 @@ export default (props) =>{
       <Typography variant="h6" color="inherit" style={{flex: 1}}>
         News
       </Typography>
-      <Create />
+      <Create muscles={muscles}/>
     </Toolbar>
   </AppBar>
 

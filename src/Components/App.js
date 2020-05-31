@@ -46,7 +46,7 @@ class App extends Component {
 
     return (
       <>
-        <Header />
+        <Header muscles={muscles}/>
         <Exercises exercises={exercises} category={category} onSelect={this.handleExcerciseSelected} exercise={exercise} />
         <Footer muscles={muscles} category={category} onSelect={this.handleCategorySelected} />
       </>

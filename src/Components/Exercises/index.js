@@ -12,13 +12,14 @@ export default ({
   category,
   onSelect,
   exercise:
-    {id,
+    {
+      id,
       title = 'Welcome!',
       description = 'Please select an exercise from the list on the left.'
     }
   }) => {
 
-  console.log("TEST", exercises)
+  // console.log("TEST", exercises)
 
   return (
     <Grid container>

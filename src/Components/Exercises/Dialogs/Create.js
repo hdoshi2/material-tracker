@@ -1,13 +1,12 @@
 import React, {Fragment, useEffect, useState} from 'react';
-import {Button, TextField, Dialog, DialogActions, DialogContent, DialogContentText, DialogTitle, Fab} from '@material-ui/core';
+import {Button, TextField, Dialog, DialogActions, DialogContent, DialogContentText, DialogTitle, Fab, MenuItem} from '@material-ui/core';
 import AddIcon from '@material-ui/icons/Add';
 
 
-export default props => {
+export default ({muscles}) => {
 
   const [open, setOpen] = React.useState(false);
-
-  const [values, setValues] = useState({name: '', quantity: 0, unitCost: 0})
+  const [input, setInput] = useState({title: '', description: "", muscles: ""})
 
   const handleClickOpen = () => {
     setOpen(true);
@@ -19,11 +18,13 @@ export default props => {
 
   const handleInputChange = e => {
     const {name, value} = e.target
-    setValues({...values, [name]: value})
+    setInput({...input, [name]: value})
   }
 
   // useEffect(() => console.log(values), [values]);
-  console.log(values)
+  console.log("values", input)
+  console.log("TEST111", muscles)
+
   return(
     <Fragment>
       <Fab size="small" color="secondary" aria-label="add" onClick={handleClickOpen}>
@@ -43,13 +44,41 @@ export default props => {
             <TextField
               autoFocus
               margin="dense"
-              label="name"
-              type="name"
-              name='name'
+              label="Title"
+              type="title"
+              name='title'
               fullWidth
               onChange={handleInputChange}
-              value={values.name}
+              value={input.title}
             />
+            <TextField
+              autoFocus
+              label="Description"
+              multiline
+              type="description"
+              name='description'
+              rows={4}
+              placeholder="Add info here..."
+              fullWidth
+              onChange={handleInputChange}
+              value={input.description}
+            />
+            <TextField
+              select
+              fullWidth
+              label="Muscles Group"
+              value={input.muscles}
+              type="muscles"
+              name='muscles'
+              onChange={handleInputChange}
+              helperText="Select muscles category"
+            >
+              {muscles.map((option, id) => (
+                <MenuItem key={id} value={option}>
+                  {option}
+                </MenuItem>
+              ))}
+            </TextField>
           </form>
 
         </DialogContent>
